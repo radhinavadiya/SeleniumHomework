@@ -43,7 +43,8 @@ public class TestSuit {
 
     @AfterMethod
     public static void closeBrowser() {
-        driver.close();
+        //driver.close();
+        driver.quit();
     }
 
     @BeforeMethod
@@ -58,6 +59,7 @@ public class TestSuit {
         //river.findElement(By.className("ico-register")).click();
         register1();//method calling
         //catch message
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         String message =getTextFromElement(By.xpath("//div[@class=\"result\"]"));
         //print message
         System.out.println(message);
@@ -138,6 +140,7 @@ public class TestSuit {
         //click on Add to compare list on $25 Virtual Gift Card
         driver.findElement(By.xpath("//img[@src='https://demo.nopcommerce.com/Themes/DefaultClean/Content/images/logo.png']")).click();
         clickOnElement(By.xpath("(//button[@class='button-2 add-to-compare-list-button'])[4]"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         //click on product comparison list
         clickOnElement(By.xpath("//*[@id=\"bar-notification\"]/div/p/a"));
         //get text
